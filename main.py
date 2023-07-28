@@ -197,7 +197,7 @@ def Currency():
         print("Wrong input Try again!!!!")
         sys.exit(1)
 
-
+    k = input("Enter any letter to exit")
 
 def main():
     Currency()
