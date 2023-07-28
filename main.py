@@ -185,14 +185,18 @@ def Currency():
             table.add_row(currency)
         table.align = "l"
         print(table)
-    first_Currency = input("\nEnter the Currency you want to Exchange from: ")
-    quantity = int(input("Enter quantity: "))
-    target_Currency = input("Enter the Target Currency: ")
-    r = requests.get("https://v6.exchangerate-api.com/v6/57bfebecfbb2d86a16c3e00b/latest/"+first_Currency).json()
-    print(r)
-    for key,value in r["conversion_rates"].items():
-        if key == target_Currency:
-            print(f"{quantity} {first_Currency} equals to {value} {key}")
+    try:
+        first_Currency = input("\nEnter the Currency you want to Exchange from: ")
+        quantity = int(input("Enter quantity: "))
+        target_Currency = input("Enter the Target Currency: ")
+        r = requests.get("https://v6.exchangerate-api.com/v6/57bfebecfbb2d86a16c3e00b/latest/"+first_Currency).json()
+        for key,value in r["conversion_rates"].items():
+            if key == target_Currency:
+                print(f"{quantity} {first_Currency} equals to {value} {key}")
+    except:
+        print("Wrong input Try again!!!!")
+        sys.exit(1)
+
 
 
 def main():
